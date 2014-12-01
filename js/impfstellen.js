@@ -6,6 +6,7 @@ function init() {
     var options = { url: "http://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:IMPFSTELLEOGD&srsName=EPSG:4326&outputFormat=json" };
     $.ajax(options).done(onReceiveComplete);
     initialize();
+    $('#btnGetPosition').click(getCurrentPosition);
 }
 
  function onReceiveComplete(data) {
@@ -53,4 +54,30 @@ function init() {
      });
  }
 
+/*get the users current position by HTML5 geolocation API*/
+function getCurrentPosition(){
+	var geo_options = {
+		enableHighAccuracy: false,
+		maximumAge        : 3000,
+		timeout           : 6000000
+	};	
+	console.log("geolocation");
+	if (navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(showPositionOnMap);
+	} else {
+		alert("Please activate geolocation api!");
+	}
+	
+}
+
+/*change to the users current position on the map*/
+function showPositionOnMap(position) {
+	console.log(position.coords.latitude + " - " + position.coords.longitude);
+	var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude); //users current position
+         var mapOptions = {
+             zoom: 14,
+             center: myLatlng
+         };
+	 var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+}
 //google.maps.event.addDomListener(window, 'load', initialize);
