@@ -17,7 +17,7 @@ function init() {
      console.log(data);
      var myLatlng = new google.maps.LatLng(48.209272,16.37280); //vienna
          var mapOptions = {
-             zoom: 4,
+             zoom: 10,
              center: myLatlng
          };
 	 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -39,7 +39,7 @@ function init() {
          });
          
          var infowindow = new google.maps.InfoWindow({
-      		content: "<p>" + value.properties.BEZEICHNUNG + "</p><a href=\"" + value.properties.WEBLINK1 + "\">Weblink</a>"
+      		content: "<p>" + value.properties.BEZEICHNUNG + "</p><a href=\"" + value.properties.WEBLINK1 + "\">Weblink</a><p>" + value.properties.ADRESSE +  "</p>"
   		});
 
          
