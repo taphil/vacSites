@@ -1,0 +1,74 @@
+/*
+* Variables
+*/
+/*
+* Mixins
+*/
+/*
+* Footer
+*/
+#footer {
+    background-color: #5bc0ff;
+    height: 45px;
+}
+#footer #footer-root {
+    color: #fff9ce;
+    padding: 9px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    margin: 0 6px;
+}
+#footer-impressum-link {
+    -webkit-flex: 1;
+    flex: 1;
+}
+#footer-copyright {
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
+}
+/*
+* Header
+*/
+#header {
+    height: 60px;
+    background-color: #5bc0ff;
+    color: #fff9ce;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+#header .navigation-entry {
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+    vertical-align: middle;
+    height: 60px;
+    padding-top: 17px;
+}
+#header .navigation-entry img {
+    height: 60px;
+}
+#header .navigation-entry a {
+    text-decoration: none;
+}
+#header .with-background {
+    background: url("../images/syringe_middle.png");
+    background-repeat: repeat-x;
+    background-size: 100% 60px;
+}

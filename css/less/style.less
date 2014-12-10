@@ -1,0 +1,92 @@
+/*
+* Variables
+*/
+@baseColorBlue: #5BC0FF;
+@baseColorOrange: #FF7F35;
+@baseColorLight: #FFF9CE;
+
+@headerHeight: 60px;
+@paddingTopSyringe: 17px; //in relation to @headerHeight
+
+/*
+* Mixins
+*/
+.flex-container() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.flex-item(@width) {
+  -webkit-flex: @width;
+  flex: @width;
+}
+
+.picture-style() {
+  background-size: contain;
+}
+
+/*
+* Footer
+*/
+#footer {
+  background-color: @baseColorBlue;
+  height: 45px;
+
+  #footer-root {
+    color: @baseColorLight;
+    padding: 9px;
+    .flex-container();
+    margin: 0 6px;
+  }
+}
+
+#footer-impressum-link {
+  .flex-item(1);
+}
+
+#footer-copyright {
+  .flex-item(1);
+  text-align: right;
+}
+
+/*
+* Header
+*/
+#header {
+  height: @headerHeight;
+
+  background-color: @baseColorBlue;
+  color: @baseColorLight;
+  .flex-container();
+
+  .navigation-entry {
+    .flex-item(1);
+    text-align: center;
+    vertical-align: middle;
+    height: @headerHeight;
+    padding-top: @paddingTopSyringe;
+
+    img {
+      height: @headerHeight;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .with-background {
+       background: url("../images/syringe_middle.png");
+       background-repeat: repeat-x;
+       background-size: 100% @headerHeight;
+  }
+}
