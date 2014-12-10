@@ -7,6 +7,7 @@ var vacs;
 function init() {
 	/*add event listeners*/
 	$('#btnGetPosition').click(getCurrentPosition);
+    $('#btnClosestLocation').click(clickNextLocation);
 	
     /*get data from open data service*/
     var options = { url: "http://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:IMPFSTELLEOGD&srsName=EPSG:4326&outputFormat=json" };
@@ -100,19 +101,38 @@ function showPositionOnMap(position) {
      console.log(map);
      map.setOptions(mapOptions);
 	 //var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+}
+//google.maps.event.addDomListener(window, 'load', initialize);
 
+function clickNextLocation() {
+    var geo_options = {
+        enableHighAccuracy: false,
+        maximumAge        : 3000,
+        timeout           : 6000000
+    };
+    console.log("geolocation");
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showNextLocation);
+    } else {
+        alert("Please activate geolocation api!");
+    }
+}
+
+function showNextLocation(position) {
     var shortestDistance = 999999;
     var currentDistance;
+    var shortestDistanceText;
+
     $.each(vacs.features, function(i, value) {
         currentDistance = distance(value.geometry.coordinates[1],value.geometry.coordinates[0], position.coords.latitude, position.coords.longitude);
         if (currentDistance < shortestDistance) {
             shortestDistance = currentDistance;
+            shortestDistanceText = value.properties.BEZEICHNUNG;
         }
     });
 
-    alert("shortest distance: " + shortestDistance);
+    alert("shortest distance: " + shortestDistance + "km, to " + shortestDistanceText);
 }
-//google.maps.event.addDomListener(window, 'load', initialize);
 
 function distance(lat1, lon1, lat2, lon2) {
     var radlat1 = Math.PI * lat1/180;
