@@ -1,8 +1,10 @@
 /*call the init-function*/
 $(init);
 
+/*gobal varialbes*/
 var map;
 var vacs;
+var activeWindow;
 
 function init() {
 	/*add event listeners*/
@@ -21,9 +23,10 @@ function init() {
      vacs = data;
 
      console.log(data);
+     /*Default location in case the user does not want to use geolocation*/
      var myLatlng = new google.maps.LatLng(48.209272,16.37280); //vienna
          var mapOptions = {
-             zoom: 10,
+             zoom: 11,
              center: myLatlng
          };
 	 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -38,10 +41,21 @@ function init() {
          var myLatlng = new google.maps.LatLng(value.geometry.coordinates[1],value.geometry.coordinates[0]);
          console.log(myLatlng);
          
+         //var syringeIcon = "img/syringe-s.png";         
+         //syringeIcon.setSize = new google.maps.Size(16, 16);
+         var syringeIcon = {
+         	 url: 'img/syringe-s.png',
+         	 scaledSize: new google.maps.Size(16, 16)
+    		 /*size: new google.maps.Size(16, 16),
+    		 origin: new google.maps.Point(0,0),
+    		anchor: new google.maps.Point(0, 0)*/
+         };
+         //TODO: change marker size according to zoom level
          var marker = new google.maps.Marker({
              position: myLatlng,
              map: map,
-             title: value.properties.BEZEICHNUNG
+             title: value.properties.BEZEICHNUNG,
+             icon: syringeIcon
          });
          
          var infowindow = new google.maps.InfoWindow({
