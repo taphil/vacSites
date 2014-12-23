@@ -1,24 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="utf-8">
     <title>Impfstellenübersicht</title>
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/impfstellen-text.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="js/impfstellen-map.js"></script>
     <script src="js/code.js"></script>
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header id="header"></header>
+	<header id="header"></header>
 
-    <h1>Übersicht aller Impfstellen in Wien</h1>
-
-    <div id="impfstellen">
-
-    </div>
+    <div id="map-canvas"></div>
+	<button id="btnGetPosition">Aktuelle Position</button>
+    <button id="btnClosestLocation">Nächste Impfstelle</button>
 
     <footer id="footer"></footer>
 </body>

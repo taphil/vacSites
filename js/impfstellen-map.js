@@ -31,12 +31,6 @@ function init() {
          };
 	 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      $.each(data.features, function(i, value) {
-         var newItem = $("<li>"+ value.properties.BEZEICHNUNG + "  - " + value.properties.WEBLINK1 + "</li>");
-         $("#impfstellen").prepend(newItem);
-
-         //google map
-         
-         
 
          var myLatlng = new google.maps.LatLng(value.geometry.coordinates[1],value.geometry.coordinates[0]);
          console.log(myLatlng);
@@ -133,19 +127,41 @@ function clickNextLocation() {
 }
 
 function showNextLocation(position) {
-    var shortestDistance = 999999;
+    //calc next location
+    var shortestDistance = 9999999;
     var currentDistance;
+
     var shortestDistanceText;
+    var shortestDistanceLat;
+    var shortestDistanceLng;
 
     $.each(vacs.features, function(i, value) {
         currentDistance = distance(value.geometry.coordinates[1],value.geometry.coordinates[0], position.coords.latitude, position.coords.longitude);
         if (currentDistance < shortestDistance) {
             shortestDistance = currentDistance;
             shortestDistanceText = value.properties.BEZEICHNUNG;
+            shortestDistanceLat = value.geometry.coordinates[1];
+            shortestDistanceLng = value.geometry.coordinates[0];
         }
     });
 
-    alert("shortest distance: " + shortestDistance + "km, to " + shortestDistanceText);
+    //draw line on map
+    var beelineCoordinates = [
+        new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+        new google.maps.LatLng(shortestDistanceLat, shortestDistanceLng)
+    ];
+
+    var beeline = new google.maps.Polyline({
+        path: beelineCoordinates,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        map: map
+    });
+
+    //output info
+    alert("shortest distance: " + shortestDistance + "km, to " + shortestDistanceText + "Lat: " + shortestDistanceLat + "Long:" + shortestDistanceLng);
 }
 
 function distance(lat1, lon1, lat2, lon2) {

@@ -72,3 +72,28 @@
   background-repeat: repeat-x;
   background-size: 100% 60px;
 }
+/*
+* Impfstellen.html
+*/
+html,
+body,
+#map-canvas {
+  height: 80%;
+  margin: 0px;
+  padding: 0px;
+}
+/*
+* Index.html
+*/
+#impfstellen {
+  margin: 12px;
+}
+#impfstellen table thead {
+  font-size: 1.5rem;
+}
+#impfstellen table td {
+  padding: 5px 14px 5px 6px;
+}
+#impfstellen table td a {
+  text-decoration: none;
+}
