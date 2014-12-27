@@ -1,12 +1,17 @@
 /*
 * Variables
 */
-@baseColorBlue: #5BC0FF;
-@baseColorOrange: #FF7F35;
+@baseColorBlue: #05217D;
+@baseColorOrange: #FFB000;
 @baseColorLight: #FFF9CE;
 
 @headerHeight: 60px;
 @paddingTopSyringe: 17px; //in relation to @headerHeight
+@footerHeight: 50px;
+@mainPadding: @footerHeight;
+
+/*variables for responsive design*/
+@maxWidth: 400px;
 
 /*
 * Mixins
@@ -39,7 +44,11 @@
 */
 #footer {
   background-color: @baseColorBlue;
-  height: 50px;
+  height: @footerHeight;
+  position: fixed;
+  width: 100%;
+  margin-bottom: 0px;
+  bottom: 0px;
 
   #footer-root {
     color: @baseColorLight;
@@ -47,6 +56,13 @@
     .flex-container();
     margin: 0 6px;
   }
+}
+
+@media (max-width: @maxWidth) {
+  #footer {
+    position: relative;
+    background-color: @baseColorOrange;
+   }
 }
 
 #footer-impressum-link {
@@ -60,20 +76,20 @@
 
 /*
 * Header
+* comment PTA: i think it would be better, to style the corresponding elements inside header.html instead of the element which will be replace by header.html
 */
 #header {
   height: @headerHeight;
 
   background-color: @baseColorBlue;
   color: @baseColorLight;
-  .flex-container();
 
   .navigation-entry {
     .flex-item(1);
     text-align: center;
     vertical-align: middle;
-    height: @headerHeight;
-    padding-top: @paddingTopSyringe;
+    //height: @headerHeight;
+    //padding-top: @paddingTopSyringe;
 
     img {
       height: @headerHeight;
@@ -89,15 +105,47 @@
        background-repeat: repeat-x;
        background-size: 100% @headerHeight;
   }
+  
+  .navigation-bar {
+    .flex-container();
+    background-color: @baseColorOrange;
+    height: 30%;
+  }
+  
+  .header-bar {
+    height: 70%;
+  }
+}
+
+/*
+ * Global styles
+ */
+.main-content {
+  padding-bottom: @mainPadding;
+  height: 100%;
+  #map-canvas {
+     height: 90%;
+   }
+}
+
+@media (max-width: @maxWidth) {
+  .main-content {
+  padding-bottom: 0px;
+  height: 100%;
+  #map-canvas {
+     height: 350px;
+   }
+}
 }
 
 /*
 * Impfstellen.html
 */
- html, body, #map-canvas {
-   height: 80%;
+ html, body {
+   height: 100%;
    margin: 0px;
    padding: 0px
+   width: 100%;
  }
 
 /*

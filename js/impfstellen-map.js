@@ -1,10 +1,12 @@
-/*call the init-function*/
+/*call the init-function when the page is loaded*/
 $(init);
 
-/*gobal varialbes*/
+/*gobal variables*/
 var impfMap;
 var vacSites;
 var mapMarkers = [];
+var infoWindows = [];
+var defaultZoomLevel = 11;
 var userPositionMarker;
 var activeWindow;
 
@@ -34,8 +36,7 @@ function loadVacSites() {
 function onReceiveComplete(data) {
 	vacSites = data;
 
-	/*probably save data to local storage in future*/
-	console.log(data);
+	/*TODO: probably save data to local storage in future*/
 
 	addMapMarkers();
 }
@@ -43,12 +44,11 @@ function onReceiveComplete(data) {
 function addMapMarkers() {
 	/*Default location in case the user does not want to use geolocation*/
 	var myLatlng = new google.maps.LatLng(48.209272, 16.37280);
-	//vienna
+
 	var mapOptions = {
-		zoom : 11,
+		zoom : defaultZoomLevel,
 		center : myLatlng
 	};
-	//map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 	$.each(vacSites.features, function(index, value) {
 		console.log(index + " - " + value);
@@ -57,18 +57,19 @@ function addMapMarkers() {
 }
 
 function drawMarker(index, value) {
-	console.log(index + " - " + value);
+	/*get position of new marker*/
 	var myLatlng = new google.maps.LatLng(value.geometry.coordinates[1], value.geometry.coordinates[0]);
 
+	/*get the current desired icon size*/
 	var iconSize = getIconSize();
 
-	//console.log(myLatlng);
-
+	/*build up the icon to show on the map*/
 	var syringeIcon = {
 		url : 'img/syringe-s.png',
 		scaledSize : new google.maps.Size(iconSize, iconSize)
 	};
 
+	/*add a new marker for the current object*/
 	var marker = new google.maps.Marker({
 		position : myLatlng,
 		map : impfMap,
@@ -76,24 +77,33 @@ function drawMarker(index, value) {
 		icon : syringeIcon,
 	});
 
+	/*add the marker to the existing markers*/
 	mapMarkers.push(marker);
 
-	var infowindow = new google.maps.InfoWindow({
+	/*create a new info window*/
+	var infoWindow = new google.maps.InfoWindow({
 		content : "<p>" + value.properties.BEZEICHNUNG + "</p><a href=\"" + value.properties.WEBLINK1 + "\">Weblink</a><p>" + value.properties.ADRESSE + "</p>"
 	});
 
-	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(impfMap, marker);
-	});
+	/*add the new infoWindow to the existing windows*/
+	infoWindows.push(infoWindow);
 
-	console.log(marker);
+	/*add a click event listener for the marker, to open the window*/
+	google.maps.event.addListener(marker, 'click', function() {
+		/*check if any other window is open and close it if so*/
+		if (activeWindow != undefined) {
+			activeWindow.close();
+		}
+		infoWindow.open(impfMap, marker);
+		activeWindow = infoWindow;
+	});
 }
 
 function initializeMap() {
 	/*set center of Map to Vienna*/
 	var myLatlng = new google.maps.LatLng(48.209272, 16.37280);
 	var mapOptions = {
-		zoom : 11,
+		zoom : defaultZoomLevel,
 		center : myLatlng
 	};
 
@@ -166,8 +176,8 @@ function adaptZoomLevel() {
 
 /*get the users current position by HTML5 geolocation API*/
 function getCurrentPosition() {
-	//console.log("high accuracy: " + $("#chkHighAccuracy").is(':checked'));
 	var bEnableHighAccurace = $("#chkHighAccuracy").is(':checked');
+
 	var geoOptions = {
 		enableHighAccuracy : bEnableHighAccurace,
 		maximumAge : 3000,
@@ -177,23 +187,32 @@ function getCurrentPosition() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPositionOnMap, geoLocationError, geoOptions);
 	} else {
-		/*Raise error*/
-		alert("Please activate geolocation api!");
+		/*TODO: add proper errorhandling*/
+		alert("Your browser does not support geolocation!");
 	}
 
 }
 
 /*change to the users current position on the map*/
 function showPositionOnMap(position) {
+	/*get latitude and longitude of users position*/
 	var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	//users current position
-	var mapOptions = {
-		zoom : 14,
-		center : myLatLng
-	};
+
+	/*if user changed the zoom level lower than default, zooming has to be done*/
+	if (impfMap.getZoom() == defaultZoomLevel || impfMap.getZoom() < 10) {
+		var mapOptions = {
+			zoom : 14,
+			center : myLatLng
+		};
+	} else {
+		var mapOptions = {
+			center : myLatLng
+		};
+	}
 
 	impfMap.setOptions(mapOptions);
 
+	/*either add the marker for users position, or change its position*/
 	if (userPositionMarker == undefined) {
 		userPositionMarker = new google.maps.Marker({
 			position : myLatLng,
@@ -205,8 +224,26 @@ function showPositionOnMap(position) {
 	}
 }
 
+/*function for error handling during geolocation request
+ * TODO: add proper error handler (instead of alert)
+ */
 function geoLocationError() {
-	alert("Geolocation error: " + error.code);
+	switch(error.code) {
+	case error.PERMISSION_DENIED:
+		alert("Please allow geolocation!");
+		break;
+	case error.POSITION_UNAVAILABLE:
+		alert("Your position could not be determined!");
+		break;
+	case error.TIMEOUT:
+		alert("Your location could not be determined in reasonable time!");
+		break;
+	case error.UNKNOWN_ERROR:
+		alert("An unknown error occured!");
+		break;
+	default:
+		alert("An unknown error occured!");
+	}
 }
 
 //google.maps.event.addDomListener(window, 'load', initialize);
