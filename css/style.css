@@ -1,99 +1,80 @@
-/*
-* Variables
-*/
-/*
-* Mixins
-*/
-/*
-* Footer
-*/
 #footer {
-  background-color: #5bc0ff;
-  height: 45px;
+	background-color: #5bc0ff;
+	height: 50px
 }
 #footer #footer-root {
-  color: #fff9ce;
-  padding: 9px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
-  margin: 0 6px;
+	color: #fff9ce;
+	padding: 9px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	align-items: stretch;
+	margin: 0 6px
 }
 #footer-impressum-link {
-  -webkit-flex: 1;
-  flex: 1;
+	-webkit-flex: 1;
+	flex: 1
 }
 #footer-copyright {
-  -webkit-flex: 1;
-  flex: 1;
-  text-align: right;
+	-webkit-flex: 1;
+	flex: 1;
+	text-align: right
 }
-/*
-* Header
-*/
 #header {
-  height: 60px;
-  background-color: #5bc0ff;
-  color: #fff9ce;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
+	height: 60px;
+	background-color: #5bc0ff;
+	color: #fff9ce;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	align-items: stretch
 }
 #header .navigation-entry {
-  -webkit-flex: 1;
-  flex: 1;
-  text-align: center;
-  vertical-align: middle;
-  height: 60px;
-  padding-top: 17px;
+	-webkit-flex: 1;
+	flex: 1;
+	text-align: center;
+	vertical-align: middle;
+	height: 60px;
+	padding-top: 17px
 }
 #header .navigation-entry img {
-  height: 60px;
+	height: 60px
 }
 #header .navigation-entry a {
-  text-decoration: none;
+	text-decoration: none
 }
 #header .with-background {
-  background: url("../images/syringe_middle.png");
-  background-repeat: repeat-x;
-  background-size: 100% 60px;
+	background: url("../images/syringe_middle.png");
+	background-repeat: repeat-x;
+	background-size: 100% 60px
 }
-/*
-* Impfstellen.html
-*/
-html,
-body,
-#map-canvas {
-  height: 80%;
-  margin: 0px;
-  padding: 0px;
+html, body, #map-canvas {
+	height: 80%;
+	margin: 0;
+	padding: 0
 }
-/*
-* Index.html
-*/
 #impfstellen {
-  margin: 12px;
+	margin: 12px
 }
 #impfstellen table thead {
-  font-size: 1.5rem;
+	font-size: 1.5 rem
 }
 #impfstellen table td {
-  padding: 5px 14px 5px 6px;
+	padding: 5px 14px 5px 6px
 }
 #impfstellen table td a {
-  text-decoration: none;
+	text-decoration: none
 }
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
