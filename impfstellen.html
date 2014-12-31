@@ -7,7 +7,7 @@
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 		<script src="js/impfstellen-map.js"></script>
-		<script src="js/code.js"></script>
+		<script src="js/headerFooterLoad.js"></script>
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -23,11 +23,11 @@
 			</div>
 
 			<div class="map-controls">
-				<button id="btnGetPosition">
-					Aktuelle Position
+				<button id="btnGetPosition" title="Aktuelle Position">
+					<img src="img/gps.png" alt="Aktuelle Position">
 				</button>
-				<button id="btnClosestLocation">
-					Nächste Impfstelle
+				<button id="btnClosestLocation" title="Nächste Impfstelle">
+					<img src="img/direction.png" alt="Nächste Impfstelle">
 				</button>
 				<label>
 					<input type="checkbox" id="chkHighAccuracy">
