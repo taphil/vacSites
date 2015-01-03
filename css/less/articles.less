@@ -1,0 +1,21 @@
+@baseColorBlue: #05217D;
+@baseColorOrange: #FFB000;
+@baseColorLight: #FFF9CE;
+
+@footerHeight: 50px;
+@mainPadding: @footerHeight;
+
+
+.main-content {
+  padding-bottom: @mainPadding;
+  height: 100%;
+  //overflow: scroll;
+}
+
+.info-article {
+	background-color: @baseColorBlue;
+	
+	&:nth-child(odd) {
+  	background-color: @baseColorOrange;
+  }
+}
