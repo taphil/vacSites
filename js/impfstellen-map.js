@@ -231,6 +231,9 @@ function geoLocationError() {
 	switch(error.code) {
 	case error.PERMISSION_DENIED:
 		alert("Please allow geolocation!");
+		$('#errorText').text("Standortbestimmung ist nicht zugelassen!");
+		$('#errorBar').addClass("message-bar-visible");
+		$('#errorBar').removeClass("message-bar-hidden");
 		break;
 	case error.POSITION_UNAVAILABLE:
 		alert("Your position could not be determined!");
