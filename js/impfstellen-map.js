@@ -181,7 +181,7 @@ function getCurrentPosition() {
 	var geoOptions = {
 		enableHighAccuracy : bEnableHighAccurace,
 		maximumAge : 3000,
-		timeout : 6000000
+		timeout : 1000
 	};
 
 	if (navigator.geolocation) {
@@ -227,7 +227,9 @@ function showPositionOnMap(position) {
 /*function for error handling during geolocation request
  * TODO: add proper error handler (instead of alert)
  */
-function geoLocationError() {
+function geoLocationError(error) {
+	
+	alert(error.code);
 	switch(error.code) {
 	case error.PERMISSION_DENIED:
 		alert("Please allow geolocation!");
@@ -240,6 +242,12 @@ function geoLocationError() {
 		break;
 	case error.TIMEOUT:
 		alert("Your location could not be determined in reasonable time!");
+		$('#errorText').text("Standortbestimmung ist zeitgerecht durchgeführt worden!");
+		$('#errorBar').addClass("message-bar-visible");
+		$('#errorBar').animate({
+			marginTop: 0
+			}, 5000);
+		$('#errorBar').removeClass("message-bar-hidden");
 		break;
 	case error.UNKNOWN_ERROR:
 		alert("An unknown error occured!");

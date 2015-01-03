@@ -98,6 +98,23 @@
 
     a {
       text-decoration: none;
+      color: @baseColorBlue;
+    }
+    
+    &:hover {
+    	background-color: @baseColorBlue;
+    	color: white;
+    	a {
+    		color: @baseColorOrange;
+    	}
+    	
+    	&:last-child {
+    		background-color: @baseColorOrange;
+    	}
+    	
+    	&:first-child {
+    		background-color: @baseColorOrange;
+    	}
     }
   }
   
@@ -128,7 +145,8 @@
 .message-bar() {
 	position: absolute;
 	height: @messageBarHeight;
-	top: @headerHeight - @messageBarHeight;
+	top: 0;
+	margin-top: -(@messageBarHeight);
 	
 	background-color: red;
 }
@@ -142,6 +160,7 @@
 	.message-bar;
 		position: relative;
 		display: block;
+		z-index: 1;
 	}
 
 /*
