@@ -1,0 +1,26 @@
+@baseColorBlue: #05217D;
+@baseColorOrange: #FFB000;
+@baseColorLight: #FFF9CE;
+@footerHeight: 50px;
+@mainPadding: @footerHeight;
+
+.main-content {
+	padding-bottom: @mainPadding;
+	height: 100%;
+}
+
+.info-article {
+	background-color: @baseColorBlue;
+	float: right;
+	width: 50%;
+	&:nth-child(odd) {
+		background-color: @baseColorOrange;
+		float: left;
+		margin-right: 50%;
+	}
+	
+	&:nth-child(even) {
+		margin-left: 50%;
+	}
+}
+

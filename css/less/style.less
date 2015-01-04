@@ -6,6 +6,7 @@
 @baseColorLight: #FFF9CE;
 
 @headerHeight: 60px;
+@messageBarHeight: 20px;
 @paddingTopSyringe: 17px; //in relation to @headerHeight
 @footerHeight: 50px;
 @mainPadding: @footerHeight;
@@ -50,7 +51,7 @@
   margin-bottom: 0px;
   bottom: 0px;
 
-  #footer-root {
+  .footer-root {
     color: @baseColorLight;
     padding: 9px;
     .flex-container();
@@ -80,7 +81,7 @@
 */
 #header {
   height: @headerHeight;
-
+  //position: fixed;
   background-color: @baseColorBlue;
   color: @baseColorLight;
 
@@ -97,8 +98,32 @@
 
     a {
       text-decoration: none;
+      color: @baseColorBlue;
+    }
+    
+    &:hover {
+    	background-color: @baseColorBlue;
+    	color: white;
+    	a {
+    		color: @baseColorOrange;
+    	}
+    	
+    	&:last-child {
+    		background-color: @baseColorOrange;
+    	}
+    	
+    	&:first-child {
+    		background-color: @baseColorOrange;
+    	}
     }
   }
+  
+  @media (max-width: @maxWidth) {
+  #header {
+    //position: relative;
+    background-color: @baseColorOrange;
+   }
+}
 
   .with-background {
        background: url("../img/syringe_middle.png");
@@ -116,6 +141,27 @@
     height: 70%;
   }
 }
+
+.message-bar() {
+	position: absolute;
+	height: @messageBarHeight;
+	top: 0;
+	margin-top: -(@messageBarHeight);
+	
+	background-color: red;
+}
+	
+.message-bar-hidden {
+		.message-bar;
+		display: none;
+	}
+	
+.message-bar-visible {
+	.message-bar;
+		position: relative;
+		display: block;
+		z-index: 1;
+	}
 
 /*
  * Global styles
@@ -144,7 +190,7 @@
  html, body {
    height: 100%;
    margin: 0px;
-   padding: 0px
+   padding: 0px;
    width: 100%;
  }
 
