@@ -68,7 +68,7 @@
   text-decoration: none;
 }
 #header .with-background {
-  background: url("../images/syringe_middle.png");
+  background: url("../img/syringe_middle.png");
   background-repeat: repeat-x;
   background-size: 100% 60px;
 }
