@@ -6,6 +6,7 @@
 @baseColorLight: #FFF9CE;
 
 @headerHeight: 60px;
+@navigationHeight: 20px;
 @messageBarHeight: 20px;
 @paddingTopSyringe: 17px; //in relation to @headerHeight
 @footerHeight: 50px;
@@ -92,10 +93,6 @@
     //height: @headerHeight;
     //padding-top: @paddingTopSyringe;
 
-    img {
-      height: @headerHeight;
-    }
-
     a {
       text-decoration: none;
       color: @baseColorBlue;
@@ -117,6 +114,9 @@
     	}
     }
   }
+  img {
+      height: 100%;
+    }
   
   @media (max-width: @maxWidth) {
   #header {
