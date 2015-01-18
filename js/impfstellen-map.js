@@ -181,7 +181,7 @@ function getCurrentPosition() {
 	var geoOptions = {
 		enableHighAccuracy : bEnableHighAccurace,
 		maximumAge : 3000,
-		timeout : 1000
+		timeout : 15000
 	};
 
 	if (navigator.geolocation) {
@@ -242,7 +242,7 @@ function geoLocationError(error) {
 		break;
 	case error.TIMEOUT:
 		alert("Your location could not be determined in reasonable time!");
-		$('#errorText').text("Standortbestimmung ist zeitgerecht durchgeführt worden!");
+		$('#errorText').text("Standortbestimmung konnte nicht zeitgerecht durchgeführt worden!");
 		$('#errorBar').addClass("message-bar-visible");
 		$('#errorBar').animate({
 			marginTop: 0
