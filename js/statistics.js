@@ -10,11 +10,21 @@ function prepareChart() {
 
 	var chart = d3.select("#vaccinationStats").attr("width", width).attr("height", barHeight * data.length);
 
-	var bar = chart.selectAll("g").data(data).enter().append("g").attr("transform", function(d, i) {
-		return "translate(0," + i * barHeight + ")";
+	$.each(data, function (index, v) {
+		/*$("#vaccinationsStats").append("<rect x='" + v + "' y='5' width='20' height='10' />");
+		console.log($("#vaccinationsStats"));
+		$("#test").append("hallo" + v);
+		console.log($("#test"));*/
+		var chart2 = d3.select("#vaccinationStats");
+		//chart2.append("rect x='20' y='5' width='20' height='10'");
+		chart2.append("rect").attr("width", v).attr("height", 10).attr("y", 10 * index);
 	});
 
-	bar.append("rect").attr("width", x).attr("height", barHeight - 1);
+	/*var bar = chart.selectAll("g").data(data).enter().append("g").attr("transform", function(d, i) {
+		return "translate(0," + i * barHeight + ")";
+	});*/
+
+	//bar.append("rect").attr("width", x).attr("height", barHeight - 1);
 
 	/*bar.append("text").attr("x", function(d) {
 		return x(d) - 3;
