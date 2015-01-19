@@ -9,6 +9,9 @@ function init() {
     $("#subHepB").hide();
     $("#subMasern").hide();
     $("#subRoeteln").hide();
+
+    $("#btnIcs").click(btnIcsClick);
+    $("#btnText").click(btnTextClick);
 }
 
 function cbClick(source) {
@@ -47,4 +50,19 @@ function cbClick(source) {
     } else {
         $("#"+correctSubMenu).fadeOut();
     }
+}
+
+function btnIcsClick() {
+    var cal = ics();
+
+    //TODO kernma
+    /* add all reminders */
+    cal.addEvent('Demo Event', 'This is an all day event', '', '1/21/2015', '1/21/2015');
+    cal.addEvent('Demo Event', 'This is thirty minut event', '', '1/20/2015 5:30 pm', '1/20/2015 6:00 pm');
+
+    cal.download("impf_erinnerung");
+}
+
+function btnTextClick() {
+    //TODO kernma
 }

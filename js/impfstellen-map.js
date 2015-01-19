@@ -242,7 +242,7 @@ function geoLocationError(error) {
 		break;
 	case error.TIMEOUT:
 		alert("Your location could not be determined in reasonable time!");
-		$('#errorText').text("Standortbestimmung konnte nicht zeitgerecht durchgeführt worden!");
+		$('#errorText').text("Standortbestimmung konnte nicht zeitgerecht durchgefï¿½hrt worden!");
 		$('#errorBar').addClass("message-bar-visible");
 		$('#errorBar').animate({
 			marginTop: 0
@@ -267,7 +267,7 @@ function clickNextLocation() {
 	};
 	console.log("geolocation");
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showNextLocation);
+		navigator.geolocation.getCurrentPosition(showNextLocation, geoLocationError);
 	} else {
 		alert("Please activate geolocation api!");
 	}
@@ -305,7 +305,10 @@ function showNextLocation(position) {
 	});
 
 	//output info
-	alert("shortest distance: " + shortestDistance + "km, to " + shortestDistanceText + "Lat: " + shortestDistanceLat + "Long:" + shortestDistanceLng);
+	//alert("shortest distance: " + shortestDistance + "km, to " + shortestDistanceText + "Lat: " + shortestDistanceLat + "Long:" + shortestDistanceLng);
+	$('#errorText').text("Die nÃ¤chste Impfstelle ist " + shortestDistance.toFixed(2) + "km entfernt, bitte wenden Sie sich an " + shortestDistanceText);
+	$('#errorBar').addClass("message-bar-visible"); //todo: keine rote farbe hier
+	$('#errorBar').removeClass("message-bar-hidden");
 }
 
 function distance(lat1, lon1, lat2, lon2) {
