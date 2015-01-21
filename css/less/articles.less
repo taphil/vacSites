@@ -11,16 +11,33 @@
 
 .info-article {
 	background-color: @baseColorBlue;
-	float: right;
+	//float: right;
 	width: 50%;
 	&:nth-child(odd) {
 		background-color: @baseColorOrange;
-		float: left;
-		margin-right: 50%;
+		//float: left;
+		//margin-right: 50%;
 	}
 	
 	&:nth-child(even) {
-		margin-left: 50%;
+		background-color: @baseColorBlue;
+		//margin-left: 50%;
 	}
 }
 
+.collapsed {
+	height: 70px;	
+}
+
+.expanded {
+	overflow: auto;
+	//min-height: 100%;
+}
+
+.visible {
+	display: block;
+}
+
+.hidden {
+	display: none;
+}
