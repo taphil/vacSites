@@ -179,6 +179,9 @@ function btnIcsClick() {
 	}
 
 	cal.download("impf_erinnerung");
+	if ($("#cbStatistic").is(":checked")) {
+		saveVaccinationData();
+	}
 }
 
 function btnTextClick() {
@@ -286,23 +289,56 @@ function btnTextClick() {
 
 	// Remove anchor from body
 	document.body.removeChild(a)
+	if ($("#cbStatistic").is(":checked")) {
+		saveVaccinationData();
+	}
 }
 
 function saveVaccinationData() {
+	var dateString = "00-";
+	var val = $("#currFSME").val();
+		if (val) {
+			//val is now YYYY-MM
+			dateString +=  val.substring(5) + "-";
+			dateString += parseInt(val.substring(0, 4));
+		}
+	console.log(dateString);
+	
 	var postOptions = {
 		dataType : 'jsonp',
 		type : 'POST',
-		url : "http://pta.public.linz.at/vacSites/insertStats.php",
+		url : "http://pta.public.linz.at/vacSites/insertStats.php",		
 		data : {
 			firstname : "test",
 			lastname : "testlastname",
 			email : "test@test.com",
-			/*fsmeVaccinated : dateString,
-			hepAVaccinated : dateString,
+			fsmeVaccinated : dateString,
+			hepAVaccinated : null,
+			/*hepAVaccinated : dateString,
 			hepBVaccinated : dateString,
 			fluVaccinated : dateString*/
 		}
 	};
+	
+	/*var myDate = new Date();
+	var dateString = myDate.getDate() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getFullYear();;
+                console.log(dateString);
+                var postOptions = {
+                        dataType: 'jsonp',
+                        type: 'POST',
+                        url : "http://pta.public.linz.at/vacSites/insertStats.php",
+                        data: {
+                                firstname: "test",
+                                lastname: "testlastname",
+                                email: "test@test.com",
+                                fsmeVaccinated: dateString,
+                                hepAVaccinated: dateString,
+                                hepBVaccinated: dateString,
+                                fluVaccinated: dateString
+                        }
+                };*/
 
-	$.ajax(postOptions);
+	$.ajax(postOptions); /*, function() {
+		console.log("success");
+	});*/
 }
