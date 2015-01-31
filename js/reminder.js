@@ -55,125 +55,92 @@ function cbClick(source) {
 function btnIcsClick() {
 	var cal = ics();
 
-	//TODO kernma
 	/* add all reminders */
 	if ($("#cbFSME").is(":checked")) {
-		var val = $("#currFSME").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 5 years
+        var month = getMonthFromField("currFSME");
+        var yearToRe = getYearFromField("currFSME", 5);
+		if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbDiphtherie").is(":checked")) {
-		var val = $("#currDiphtherie").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 3;
-			//every 3 years
+        var month = getMonthFromField("currDiphtherie");
+        var yearToRe = getYearFromField("currDiphtherie", 3);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbTetanus").is(":checked")) {
-		var val = $("#currTetanus").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 3;
-			//every 3 years
+        var month = getMonthFromField("currTetanus");
+        var yearToRe = getYearFromField("currTetanus", 3);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbPolio").is(":checked")) {
-		var val = $("#currPolio").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 3;
-			//every 3 years
+        var month = getMonthFromField("currPolio");
+        var yearToRe = getYearFromField("currPolio", 3);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbHepA").is(":checked")) {
-		var val = $("#currHepA").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 8;
-			//every 8 years
+        var month = getMonthFromField("currHepA");
+        var yearToRe = getYearFromField("currHepA", 8);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbHepB").is(":checked")) {
-		var val = $("#currHepB").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 3 years
+        var month = getMonthFromField("currHepB");
+        var yearToRe = getYearFromField("currHepB", 5);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbMasern").is(":checked")) {
-		var val = $("#currMasern").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 1 years
+        var month = getMonthFromField("currMasern");
+        var yearToRe = getYearFromField("currMasern", 1);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
 	if ($("#cbRoeteln").is(":checked")) {
-		var val = $("#currRoetln").val();
-		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 5 years
+        var month = getMonthFromField("currRoetln");
+        var yearToRe = getYearFromField("currRoetln", 4);
+        if (month && yearToRe) {
 			var timeStringBegin = month + "/" + "1" + "/" + yearToRe;
 			//1 is day, always use first day
-			var timeStringEnd = month + "/" + "3" + "/" + yearToRe;
-			//last for 3 days...
+			var timeStringEnd = month + "/" + "2" + "/" + yearToRe;
+
 			cal.addEvent('Auffrischung FSME', 'Für optimalen Impfschutz sollte die Impfung dieses Monat gemacht werden!', '', timeStringBegin, timeStringEnd);
 		}
 	}
@@ -188,91 +155,51 @@ function btnTextClick() {
 	var textToDownload = "Zusammenfassung - Auffrischungsimpfung(en):";
 
 	if ($("#cbFSME").is(":checked")) {
-		var val = $("#currFSME").val();
+        var val = getDateValFromField("currFSME", 5);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 5 years
-			textToDownload += "\r\nFSME: " + month + "/" + yearToRe;
+			textToDownload += "\r\nFSME: " + val;
 		}
 	}
 	if ($("#cbDiphtherie").is(":checked")) {
-		var val = $("#currDiphtherie").val();
+        var val = getDateValFromField("currDiphtherie", 3);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 3;
-			//every 3 years
-			textToDownload += "\r\nDiptherie: " + month + "/" + yearToRe;
+			textToDownload += "\r\nDiptherie: " + val;
 		}
 	}
 	if ($("#cbTetanus").is(":checked")) {
-		var val = $("#currTetanus").val();
+        var val = getDateValFromField("currTetanus", 3);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 3;
-			//every 3 years
-			textToDownload += "\r\nTetanus: " + month + "/" + yearToRe;
+			textToDownload += "\r\nTetanus: " + val;
 		}
 	}
 	if ($("#cbPolio").is(":checked")) {
-		var val = $("#currPolio").val();
+        var val = getDateValFromField("currPolio", 3);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 3;
-			//every 3 years
-			textToDownload += "\r\nPolio: " + month + "/" + yearToRe;
+			textToDownload += "\r\nPolio: " + val;
 		}
 	}
 	if ($("#cbHepA").is(":checked")) {
-		var val = $("#currHepA").val();
+        var val = getDateValFromField("currHepA", 8);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 8;
-			//every 8 years
-			textToDownload += "\r\nHepatitis A: " + month + "/" + yearToRe;
+			textToDownload += "\r\nHepatitis A: " + val;
 		}
 	}
 	if ($("#cbHepB").is(":checked")) {
-		var val = $("#currHepB").val();
+        var val = getDateValFromField("currHepB", 5);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 3 years
-			textToDownload += "\r\nHepatitis B: " + month + "/" + yearToRe;
+			textToDownload += "\r\nHepatitis B: " + val;
 		}
 	}
 	if ($("#cbMasern").is(":checked")) {
-		var val = $("#currMasern").val();
+        var val = getDateValFromField("currMasern", 1);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 1 years
-			textToDownload += "\r\nMasern: " + month + "/" + yearToRe;
+			textToDownload += "\r\nMasern: " + val;
 		}
 	}
 	if ($("#cbRoeteln").is(":checked")) {
-		var val = $("#currRoeteln").val();
+        var val = getDateValFromField("currRoeteln", 4);
 		if (val) {
-			//val is now YYYY-MM
-			var month = val.substring(5);
-			var year = parseInt(val.substring(0, 4));
-			var yearToRe = year + 5;
-			//every 5 years
-			textToDownload += "\r\nRöteln: " + month + "/" + yearToRe;
+			textToDownload += "\r\nRöteln: " + val;
 		}
 	}
 
@@ -292,6 +219,41 @@ function btnTextClick() {
 	if ($("#cbStatistic").is(":checked")) {
 		saveVaccinationData();
 	}
+}
+
+function getDateValFromField(fieldName, yearsToRe) {
+    var val = $("#"+fieldName).val();
+    if (val) {
+        //val is now YYYY-MM
+        var month = val.substring(5);
+        var year = parseInt(val.substring(0, 4));
+        if (month && year) {
+            var yearToRe = year + yearsToRe;
+            return month + "/" + yearToRe;
+        }
+    }
+}
+
+function getMonthFromField(fieldName) {
+    var val = $("#"+fieldName).val();
+    if (val) {
+        //val is now YYYY-MM
+        var month = val.substring(5);
+        if (month) {
+            return month;
+        }
+    }
+}
+
+function getYearFromField(fieldName, yearsToRe) {
+    var val = $("#"+fieldName).val();
+    if (val) {
+        //val is now YYYY-MM
+        var year = parseInt(val.substring(0, 4));
+        if (year) {
+            return (year + yearsToRe);
+        }
+    }
 }
 
 function saveVaccinationData() {
