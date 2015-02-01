@@ -37,18 +37,23 @@
     background-color: #ffb000;
   }
 }
-#footer-impressum-link {
-  -webkit-flex: 1;
-  flex: 1;
-}
+/*#footer-impressum-link {
+  .flex-item(1);
+
+  a {
+    color: @baseColorLight;
+    vertical-align: middle;
+  }
+}*/
 #footer-copyright {
   -webkit-flex: 1;
   flex: 1;
   text-align: right;
+  color: #fff9ce;
+  vertical-align: middle;
 }
 /*
 * Header
-* comment PTA: i think it would be better, to style the corresponding elements inside header.html instead of the element which will be replace by header.html
 */
 #header {
   height: 60px;
@@ -163,12 +168,16 @@ body {
 }
 #impfstellen table thead {
   font-size: 1.5rem;
+  background-color: #ffb000;
 }
 #impfstellen table td {
   padding: 5px 14px 5px 6px;
 }
 #impfstellen table td a {
   text-decoration: none;
+}
+#impfstellen table tr:nth-child(even) {
+  background-color: #FFF589;
 }
 /*
 * Reminder.html
