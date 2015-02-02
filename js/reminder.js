@@ -257,14 +257,21 @@ function getYearFromField(fieldName, yearsToRe) {
 }
 
 function saveVaccinationData() {
-	var dateString = "00-";
-	var val = $("#currFSME").val();
-		if (val) {
-			//val is now YYYY-MM
-			dateString +=  val.substring(5) + "-";
-			dateString += parseInt(val.substring(0, 4));
+	var accessStrings = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Roeteln'];
+	var dateValues = [accessStrings.length];
+	var i = 0;
+	var cbString, currString, dateString;
+	
+	for (i = 0; i < accessStrings.length; i++) {
+		cbString = '#cb' + accessStrings[i];
+		currString = 'curr' + accessStrings[i];
+		dateString = '00-00-0000';
+		if ($(cbString).is(":checked")) {
+			dateString = '00-' + getMonthFromField(currString) + "-" + getYearFromField(currString, 0);
 		}
-	console.log(dateString);
+		dateValues[i] = dateString;
+		alert(i + " - " + accessStrings[i] + ": " + dateValues[i]);
+	}
 	
 	var postOptions = {
 		dataType : 'jsonp',
@@ -274,32 +281,17 @@ function saveVaccinationData() {
 			firstname : "test",
 			lastname : "testlastname",
 			email : "test@test.com",
-			fsmeVaccinated : dateString,
-			hepAVaccinated : null,
-			/*hepAVaccinated : dateString,
-			hepBVaccinated : dateString,
-			fluVaccinated : dateString*/
+			fsmeVaccinated : dateValues[0],
+			diphVaccinated : dateValues[1],
+			tetVaccinated : dateValues[2],
+			polioVaccinted : dateValues[3],
+			hepAVaccinated : dateValues[4],
+			hepBVaccinated : dateValues[5],
+			measlesVaccinated : dateValues[6],
+			rubelleVaccinated : dateValues[7]
 		}
 	};
 	
-	/*var myDate = new Date();
-	var dateString = myDate.getDate() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getFullYear();;
-                console.log(dateString);
-                var postOptions = {
-                        dataType: 'jsonp',
-                        type: 'POST',
-                        url : "http://pta.public.linz.at/vacSites/insertStats.php",
-                        data: {
-                                firstname: "test",
-                                lastname: "testlastname",
-                                email: "test@test.com",
-                                fsmeVaccinated: dateString,
-                                hepAVaccinated: dateString,
-                                hepBVaccinated: dateString,
-                                fluVaccinated: dateString
-                        }
-                };*/
-
 	$.ajax(postOptions); /*, function() {
 		console.log("success");
 	});*/

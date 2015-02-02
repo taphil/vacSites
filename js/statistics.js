@@ -11,32 +11,37 @@ function initChart() {
 }
 
 function prepareData(data) {
-	console.log(data);
-	console.log(data[1].firstname);
-	
-	var statisticData = [];
+	var statisticData = [8];
 	
 	for (var i = 0; i < 10; i++) {
 		statisticData[i] = 0;
 	}
-
 	$.each(data, function(index,v) {
-		if (v.hepAVaccinated && v.hepAVaccinated.substring(0, 4) != '0000') {
-			statisticData[0]++;
-			//console.log(v.hepAVaccinated);
-		} else {
-			//console.log(v.firstname);
-		}
 		if (v.fsmeVaccinated && v.fsmeVaccinated.substring(0, 4) != '0000') {
+			statisticData[0]++;
+		}
+		if (v.diphVaccinated && v.diphVaccinated.substring(0, 4) != '0000') {
 			statisticData[1]++;
-			console.log("counted" + v.fsmeVaccinated);
-		} else {
-			console.log("did not count" + v.fsmeVaccinated);
+		}
+		if (v.tetVaccinated && v.tetVaccinated.substring(0, 4) != '0000') {
+			statisticData[2]++;
+		}
+		if (v.polioVaccinated && v.polioVaccinated.substring(0, 4) != '0000') {
+			statisticData[3]++;
+		}
+		if (v.hepAVaccinated && v.hepAVaccinated.substring(0, 4) != '0000') {
+			statisticData[4]++;
+		}
+		if (v.hepBVaccinated && v.hepBVaccinated.substring(0, 4) != '0000') {
+			statisticData[5]++;
+		}
+		if (v.measlesVaccinated && v.measlesVaccinated.substring(0, 4) != '0000') {
+			statisticData[6]++;
+		}
+		if (v.rubelleVaccinated && v.rubelleVaccinated.substring(0, 4) != '0000') {
+			statisticData[7]++;
 		}
 	});	
-	/*for (currentObject in data) {
-		console.log(currentObject[0]);
-	}*/
 	prepareChart(statisticData);
 }
 
@@ -48,7 +53,7 @@ function prepareChart(statisticData) {
 	data = statisticData;
 	console.log(data);
 	var width = 1024, barHeight = 100;
-	var statisticCaptions = ["FSME", "Hepatitis A"];
+	var statisticCaptions = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Roeteln'];
 	var x = d3.scale.linear().domain([0, d3.max(data)]).range([0, width]);
 
 	var chart = d3.select("#vaccinationStats").attr("width", width).attr("height", barHeight * data.length);
@@ -59,7 +64,6 @@ function prepareChart(statisticData) {
 		 $("#test").append("hallo" + v);
 		 console.log($("#test"));*/
 		var chart2 = d3.select("#vaccinationStats");
-		//chart2.append("rect x='20' y='5' width='20' height='10'");
 		chart2.append("rect").attr("width", v * 5).attr("height", 50).attr("y", 50 * (index+1));
 		chart2.append("text").attr("y", 50 * (index+1)).attr("x", 150).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "red").text(statisticCaptions[index]);
 		console.log(statisticCaptions[index]);
