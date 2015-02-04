@@ -88,9 +88,10 @@
 */
 #header {
   height: @headerHeight;
-  //position: fixed;
   background-color: @baseColorBlue;
   color: @baseColorLight;
+  position: fixed;
+  width: 100%;
 
   .navigation-entry {
     .flex-item(1);
@@ -174,16 +175,17 @@
  */
 .main-content {
   padding-bottom: @mainPadding;
-  height: 100%;
+  padding-top: @headerHeight;
+  //height: 100%;
   #map-canvas {
-     height: 90%;
+     //height: 90%;
    }
 }
 
 @media (max-width: @maxWidth) {
   .main-content {
   padding-bottom: 0px;
-  height: 100%;
+  //height: 100%;
   #map-canvas {
      height: 350px;
    }

@@ -54,7 +54,7 @@ function prepareChart(statisticData) {
 	console.log(data);
 	var width = 1024, barHeight = 100;
 	var statisticCaptions = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Roeteln'];
-	var x = d3.scale.linear().domain([0, d3.max(data)]).range([0, width]);
+	//var x = d3.scale.linear().domain([0, d3.max(data)]).range([0, width]);
 
 	var chart = d3.select("#vaccinationStats").attr("width", width).attr("height", barHeight * data.length);
 
@@ -64,8 +64,9 @@ function prepareChart(statisticData) {
 		 $("#test").append("hallo" + v);
 		 console.log($("#test"));*/
 		var chart2 = d3.select("#vaccinationStats");
-		chart2.append("rect").attr("width", v * 5).attr("height", 50).attr("y", 50 * (index+1));
-		chart2.append("text").attr("y", 50 * (index+1)).attr("x", 150).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "red").text(statisticCaptions[index]);
+		chart2.append("rect").attr("width", v * 5).attr("height", 50).attr("y", 50 * index);
+		chart2.append("text").attr("y", (50 * index) + 25).attr("x", 50 + (3.75 * statisticCaptions[index].length)).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "black").text(statisticCaptions[index]);
+		chart2.append("text").attr("y", (50 * index) + 25).attr("x", width).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "black").text(v);
 		console.log(statisticCaptions[index]);
 	});
 	var chart2 = d3.select("#vaccinationStats");
