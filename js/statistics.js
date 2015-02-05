@@ -65,12 +65,10 @@ function prepareChart(statisticData) {
 		 console.log($("#test"));*/
 		var chart2 = d3.select("#vaccinationStats");
 		chart2.append("rect").attr("width", v * 5).attr("height", 50).attr("y", 50 * index);
-		chart2.append("text").attr("y", (50 * index) + 25).attr("x", 50 + (3.75 * statisticCaptions[index].length)).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "black").text(statisticCaptions[index]);
+		chart2.append("text").attr("y", (50 * index) + 25).attr("x", 50 /*+ (3.75 * statisticCaptions[index].length)*/).style("font-size", "16pt").attr("font-family", "sans-serif").style("fill", "black").style("text-anchor", "start").text(statisticCaptions[index]);
 		chart2.append("text").attr("y", (50 * index) + 25).attr("x", width).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "black").text(v);
 		console.log(statisticCaptions[index]);
 	});
-	var chart2 = d3.select("#vaccinationStats");
-	chart2.append("text").attr("y", 0).attr("dy", ".35em").attr("font-family", "sans-serif").attr("fill", "red").text("test");
 	/*var bar = chart.selectAll("g").data(data).enter().append("g").attr("transform", function(d, i) {
 	return "translate(0," + i * barHeight + ")";
 	});*/

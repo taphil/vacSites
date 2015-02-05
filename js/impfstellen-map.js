@@ -229,25 +229,40 @@ function showPositionOnMap(position) {
  */
 function geoLocationError(error) {
 	
-	alert(error.code);
+	//alert(error.code);
 	switch(error.code) {
 	case error.PERMISSION_DENIED:
-		alert("Please allow geolocation!");
+		//alert("Please allow geolocation!");
 		$('#errorText').text("Standortbestimmung ist nicht zugelassen!");
 		$('#errorBar').addClass("message-bar-visible");
 		$('#errorBar').removeClass("message-bar-hidden");
+		$('#errorBar').animate({
+			marginTop: -2,
+			opacity: 1.0
+			}, 1500);
+		window.setTimeout(hideErrorBar, 3000);
 		break;
 	case error.POSITION_UNAVAILABLE:
-		alert("Your position could not be determined!");
+		//alert("Your position could not be determined!");
+		$('#errorText').text("Ihre Position konnte nicht ermittelt werden.");
+		$('#errorBar').addClass("message-bar-visible");
+		$('#errorBar').removeClass("message-bar-hidden");
+		$('#errorBar').animate({
+			marginTop: -2,
+			opacity: 1.0
+			}, 1500);
+		window.setTimeout(hideErrorBar, 3000);
 		break;
 	case error.TIMEOUT:
-		alert("Your location could not be determined in reasonable time!");
+		//alert("Your location could not be determined in reasonable time!");
 		$('#errorText').text("Standortbestimmung konnte nicht zeitgerecht durchgef�hrt worden!");
 		$('#errorBar').addClass("message-bar-visible");
-		$('#errorBar').animate({
-			marginTop: 0
-			}, 5000);
 		$('#errorBar').removeClass("message-bar-hidden");
+		$('#errorBar').animate({
+			marginTop: -2,
+			opacity: 1.0
+			}, 1500);
+		window.setTimeout(hideErrorBar, 3000);
 		break;
 	case error.UNKNOWN_ERROR:
 		alert("An unknown error occured!");
@@ -257,7 +272,16 @@ function geoLocationError(error) {
 	}
 }
 
-//google.maps.event.addDomListener(window, 'load', initialize);
+function hideErrorBar() {
+	$('#errorBar').animate({
+		marginTop: -20,
+		opacity: 0.0
+	}, 1500, function() {
+		$('#errorText').text("");
+		$('#errorBar').addClass("message-bar-hidden");
+		$('#errorBar').removeClass("message-bar-visible");	
+	});
+}
 
 function clickNextLocation() {
 	var geo_options = {
