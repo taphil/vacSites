@@ -1,4 +1,4 @@
-$(initChart);
+$(doucment).ready(initChart);
 
 function initChart() {
 	var options = {
