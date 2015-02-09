@@ -4,13 +4,11 @@
 @footerHeight: 50px;
 @mainPadding: @footerHeight;
 
-.main-content {
-	//padding-bottom: @mainPadding;
-	//height: 100%;
-}
 
 .info-article {
 	background-color: @baseColorBlue;
+	text-align: left;
+	margin-left: 25%;
 	//float: right;
 	width: 50%;
 	&:nth-child(odd) {
@@ -30,7 +28,9 @@
 }
 
 .expanded {
-	overflow: auto;
+	height: 200px;
+	overflow-y: scroll;
+	//overflow: auto;
 	//min-height: 100%;
 }
 
