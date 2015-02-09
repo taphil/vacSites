@@ -3,6 +3,8 @@
 @baseColorLight: #FFF9CE;
 @footerHeight: 50px;
 @mainPadding: @footerHeight;
+@articleHeight: 300px;
+@contentHeight: 230px;
 
 
 .info-article {
@@ -23,21 +25,46 @@
 	}
 }
 
+video {
+	height: @contentHeight - 5;
+}
+
+.article-header {
+	.control-img {
+		width: 16px;
+		height: 16px;
+		margin-top: -45px;
+		float: right;
+		
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
+	&:hover {
+		cursor: pointer;
+	}
+}
+
 .collapsed {
 	height: 70px;	
 }
 
 .expanded {
-	height: 200px;
-	overflow-y: scroll;
-	//overflow: auto;
-	//min-height: 100%;
+	height: @articleHeight;
 }
 
-.visible {
+.article-content() {
+	height: @contentHeight;
+	overflow-y: scroll;
+}
+
+.content-visible {
+	.article-content;
 	display: block;
 }
 
-.hidden {
+.content-hidden {
+	.article-content;
 	display: none;
 }
