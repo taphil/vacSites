@@ -11,6 +11,7 @@
 @paddingTopSyringe: 17px; //in relation to @headerHeight
 @footerHeight: 50px;
 @mainPadding: 2*@footerHeight;
+@leftPadding: 20px;
 
 /*variables for responsive design*/
 @maxWidth: 400px;
@@ -177,10 +178,40 @@
 .main-content {
   padding-bottom: @mainPadding;
   padding-top: @headerHeight;
-  //height: 100%;
-  #map-canvas {
-     //height: 90%;
-   }
+  padding-left: @leftPadding;
+}
+
+.contains-map {
+	.main-content;
+  	padding-left: 0px;
+  	top: 60px;
+  	padding-top: 0px;
+  	overflow:hidden;
+  	position: fixed;
+  	width:100%;
+  	height: 100%;
+  	
+  	#map-canvas {
+     	height: 100%;
+  	}
+  	
+  	.map-controls-background {
+  		position: absolute;
+  		bottom: 210px;
+  		background-color: #5D7BDF;
+  		opacity: .5;
+  		width: 100%;
+  		
+  		span {
+  			font-size: 28pt;
+  			visibility: hidden;
+  		}
+  	}
+  	
+  	.map-controls {
+  		position: absolute; 
+  		bottom: 210px;
+  	}
 }
 
 @media (max-width: @maxWidth) {

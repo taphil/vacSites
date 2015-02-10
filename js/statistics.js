@@ -1,4 +1,4 @@
-$(document).ready(initChart);
+﻿$(document).ready(initChart);
 
 function initChart() {
 	var options = {
@@ -48,7 +48,7 @@ function prepareData(data) {
 
 function prepareChart(statisticData, valueCount) {
 	var width = 1024, barHeight = 50;
-	var statisticCaptions = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Roeteln'];
+	var statisticCaptions = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Röteln'];
 	
 	var chart = d3.select("#vaccinationStats").attr("width", width).attr("height", barHeight * statisticData.length);
 	$.each(statisticData, function(index, v) {

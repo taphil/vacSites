@@ -1,6 +1,8 @@
+@baseColorBlue: #05217D;
+
 .barChart {
 	rect {
-		fill: steelblue;
+		fill: @baseColorBlue;
 	}
 
 	.vacc-text {
@@ -19,11 +21,17 @@
 }
 
 .main-content svg {
-	padding-left: 20px;
 	padding-top: 20px;
+	
+	font-family: sans-serif;
+	font-size: 16pt;
 }
 
 div .total-number-div {
+	margin-top: 20px;
+	font-family: sans-serif;
+	font-size: 16pt;
+	
 	.visible{
 		display: block;
 	}
