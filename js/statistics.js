@@ -12,8 +12,8 @@ function initChart() {
 
 function prepareData(data) {
 	var statisticData = [8];
-	
-	for (var i = 0; i < 10; i++) {
+	var valueCount = 0;
+	for (var i = 0; i < 8; i++) {
 		statisticData[i] = 0;
 	}
 	$.each(data, function(index,v) {
@@ -41,43 +41,22 @@ function prepareData(data) {
 		if (v.rubelleVaccinated && v.rubelleVaccinated.substring(0, 4) != '0000') {
 			statisticData[7]++;
 		}
+		valueCount++;
 	});	
-	prepareChart(statisticData);
+	prepareChart(statisticData, valueCount);
 }
 
-function prepareChart(statisticData) {
-
-	var data = [4, 8, 15, 16, 23, 42];
-	
-	console.log(data);
-	data = statisticData;
-	console.log(data);
-	var width = 1024, barHeight = 100;
+function prepareChart(statisticData, valueCount) {
+	var width = 1024, barHeight = 50;
 	var statisticCaptions = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Roeteln'];
-	//var x = d3.scale.linear().domain([0, d3.max(data)]).range([0, width]);
-
-	var chart = d3.select("#vaccinationStats").attr("width", width).attr("height", barHeight * data.length);
-
-	$.each(data, function(index, v) {
-		/*$("#vaccinationsStats").append("<rect x='" + v + "' y='5' width='20' height='10' />");
-		 console.log($("#vaccinationsStats"));
-		 $("#test").append("hallo" + v);
-		 console.log($("#test"));*/
-		var chart2 = d3.select("#vaccinationStats");
-		chart2.append("rect").attr("width", v * 5).attr("height", 50).attr("y", 50 * index);
-		chart2.append("text").attr("y", (50 * index) + 25).attr("x", 50 /*+ (3.75 * statisticCaptions[index].length)*/).style("font-size", "16pt").attr("font-family", "sans-serif").style("fill", "black").style("text-anchor", "start").text(statisticCaptions[index]);
-		chart2.append("text").attr("y", (50 * index) + 25).attr("x", width).attr("font-size", "20px").attr("font-family", "sans-serif").style("fill", "black").text(v);
-		console.log(statisticCaptions[index]);
+	
+	var chart = d3.select("#vaccinationStats").attr("width", width).attr("height", barHeight * statisticData.length);
+	$.each(statisticData, function(index, v) {
+		chart.append("rect").attr("width", (v * width) / valueCount).attr("height", barHeight).attr("y", barHeight * index).attr("x", 0);
+		chart.append("text").attr("y", (barHeight * index) + 30).attr("x", 5).text(statisticCaptions[index]).attr("class", "vacc-text");
+		chart.append("text").attr("y", (50 * index) + 30).attr("x", width).text(v).attr("class", "absolute-number");
 	});
-	/*var bar = chart.selectAll("g").data(data).enter().append("g").attr("transform", function(d, i) {
-	return "translate(0," + i * barHeight + ")";
-	});*/
-
-	//bar.append("rect").attr("width", x).attr("height", barHeight - 1);
-
-	/*bar.append("text").attr("x", function(d) {
-	 return x(d) - 3;
-	 }).attr("y", barHeight / 2).attr("dy", ".35em").text(function(d) {
-	 return d;
-	 });*/
+	
+	$("#total-number").text(valueCount);
+	$(".total-number-div").toggleClass("visible hidden");
 }

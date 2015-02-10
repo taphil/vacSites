@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="utf-8">
-    <title>Impfstellenübersicht</title>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>Impfstellenübersicht</title>
 
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/impfstellen-text.js"></script>
-    <script src="js/headerFooterLoad.js"></script>
-    <script src="js/statistics.js"></script>
-    <script src="js/d3.v3.min.js"></script>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/impfstellen-text.js"></script>
+		<script src="js/headerFooterLoad.js"></script>
+		<script src="js/statistics.js"></script>
+		<script src="js/d3.v3.min.js"></script>
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/statistics.css">
-</head>
-<body>
-    <header id="header"></header>
-	<div class="main-content">
-    <h1>Impfstatistiken</h1>
-
-    <svg id="vaccinationStats" class="barChart">
-    </svg>
-    
-    <p id="test"></p>
-	</div>
-    <footer id="footer"></footer>
-</body>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/statistics.css">
+	</head>
+	<body>
+		<header id="header"></header>
+		<div class="main-content">
+			<h1>Impfstatistiken</h1>
+			<svg id="vaccinationStats" class="barChart"></svg>
+			
+			<div class="total-number-div hidden">
+				<span id="total-title">Gesamt gespeicherte Statistiken: </span>
+				<span id="total-number"></span>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+	</body>
 </html>

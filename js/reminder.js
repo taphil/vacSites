@@ -270,7 +270,6 @@ function saveVaccinationData() {
 			dateString = '00-' + getMonthFromField(currString) + "-" + getYearFromField(currString, 0);
 		}
 		dateValues[i] = dateString;
-		alert(i + " - " + accessStrings[i] + ": " + dateValues[i]);
 	}
 	
 	var postOptions = {
@@ -284,7 +283,7 @@ function saveVaccinationData() {
 			fsmeVaccinated : dateValues[0],
 			diphVaccinated : dateValues[1],
 			tetVaccinated : dateValues[2],
-			polioVaccinted : dateValues[3],
+			polioVaccinated : dateValues[3],
 			hepAVaccinated : dateValues[4],
 			hepBVaccinated : dateValues[5],
 			measlesVaccinated : dateValues[6],
