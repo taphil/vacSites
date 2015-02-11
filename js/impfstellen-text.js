@@ -3,22 +3,23 @@ $(init);
 
 function init() {
 	$('#search-field').keyup(function() {
-    var $field = $(this);
+        var $field = $(this);
 
-    // this is the value before the keypress
-    var beforeVal = $field.val();
-	//alert(beforeVal);
-    /*setTimeout(function() {
+        // this is the value before the keypress
+        var beforeVal = $field.val();
+        //alert(beforeVal);
+        /*setTimeout(function() {
 
-        // this is the value after the keypress
-        var afterVal = $field.val();
-        alert(afterVal);
-    }, 0);*/
-   	var options = {url: "http://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:IMPFSTELLEOGD&srsName=EPSG:4326&outputFormat=json"};
-    $.ajax(options).done(function(data) {
-    	updateData(data, beforeVal);
+            // this is the value after the keypress
+            var afterVal = $field.val();
+            alert(afterVal);
+        }, 0);*/
+        var options = {url: "http://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:IMPFSTELLEOGD&srsName=EPSG:4326&outputFormat=json"};
+        $.ajax(options).done(function(data) {
+            updateData(data, beforeVal);
+        });
     });
-});
+
     /*get data from open data service*/
     var options = {url: "http://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:IMPFSTELLEOGD&srsName=EPSG:4326&outputFormat=json"};
     $.ajax(options).done(onReceiveComplete);

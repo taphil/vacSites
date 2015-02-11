@@ -19,63 +19,68 @@
 <p>Damit Du nicht vergisst, alle deine Impfungen aufzufrischen, kannst du hier deine aktuellen Daten eintragen und erhältst dann einen Kalendereintrag für die nächste Auffrischung.</p>
 
 <h2>Meine Daten</h2>
-<div id="reminderForm">
-    <p>Ich bin geimpft gegen...</p>
-    <ul>
-        <li><label><input type="checkbox" id="cbFSME" onclick="cbClick(this)">... FSME (Zecken)</label>
-            <ul id="subFSME">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currFSME"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextFSME" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbDiphtherie" onclick="cbClick(this)">... Diptherie</label>
-            <ul id="subDiphtherie">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currDiphtherie"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextDiphtherie" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbTetanus" onclick="cbClick(this)">... Tetanus</label>
-            <ul id="subTetanus">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currTetanus"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextTetanus" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbPolio" onclick="cbClick(this)">... Polio</label>
-            <ul id="subPolio">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currPolio"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextPolio" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbHepA" onclick="cbClick(this)">... Hepatitis A</label>
-            <ul id="subHepA">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currHepA"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextHepA" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbHepB" onclick="cbClick(this)">... Hepatitis B</label>
-            <ul id="subHepB">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currHepB"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextHepB" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbMasern" onclick="cbClick(this)">... Masern</label>
-            <ul id="subMasern">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currMasern"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextMasern" readonly></li>-->
-            </ul></li>
-        <li><label><input type="checkbox" id="cbRoeteln" onclick="cbClick(this)">... Röteln</label>
-            <ul id="subRoeteln">
-                <li>Letzte Impfung (YYYY-MM): <input type="month" id="currRoeteln"></li>
-                <!--<li>Nächste Impfung: <input type="month" id="nextRoeteln" readonly></li>-->
-            </ul></li>
-    </ul>
-</div>
+    <form action="http://teaching.thespielplatz.com/api/general/formanalyser/" method="get" target="_blank">
+        <div id="reminderForm">
+            <p>Ich bin geimpft gegen...</p>
+            <ul>
+                <li><label><input type="checkbox" id="cbFSME" onclick="cbClick(this)">... FSME (Zecken)</label>
+                    <ul id="subFSME">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currFSME" name="currFSME"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextFSME" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbDiphtherie" onclick="cbClick(this)">... Diptherie</label>
+                    <ul id="subDiphtherie">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currDiphtherie" name="currDiphtherie"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextDiphtherie" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbTetanus" onclick="cbClick(this)">... Tetanus</label>
+                    <ul id="subTetanus">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currTetanus" name="currTetanus"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextTetanus" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbPolio" onclick="cbClick(this)">... Polio</label>
+                    <ul id="subPolio">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currPolio" name="currPolio"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextPolio" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbHepA" onclick="cbClick(this)">... Hepatitis A</label>
+                    <ul id="subHepA">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currHepA" name="currHepA"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextHepA" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbHepB" onclick="cbClick(this)">... Hepatitis B</label>
+                    <ul id="subHepB">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currHepB" name="currHepB"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextHepB" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbMasern" onclick="cbClick(this)">... Masern</label>
+                    <ul id="subMasern">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currMasern" name="currMasern"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextMasern" readonly></li>-->
+                    </ul></li>
+                <li><label><input type="checkbox" id="cbRoeteln" onclick="cbClick(this)">... Röteln</label>
+                    <ul id="subRoeteln">
+                        <li>Letzte Impfung (YYYY-MM): <input type="month" id="currRoeteln" name="currRoeteln"></li>
+                        <!--<li>Nächste Impfung: <input type="month" id="nextRoeteln" readonly></li>-->
+                    </ul></li>
+            </ul>
+        </div>
 
-<h2>Erinnerung</h2>
-<button id="btnIcs" title="ICS download">
-    <img src="img/calendar.png" alt="ICS download">
-</button>
-<button id="btnText" title="Text download">
-    <img src="img/text.png" alt="Text download">
-</button>
-<label>
-	<input type="checkbox" id="cbStatistic">
-	<span>Anonyme Speicherung</span>
-</label>
+        <h2>Erinnerung</h2>
+        <button id="btnIcs" title="ICS download">
+            <img src="img/calendar.png" alt="ICS download">
+        </button>
+        <button id="btnText" title="Text download">
+            <img src="img/text.png" alt="Text download">
+        </button>
+        <button type="submit" title="Form Analyser">
+            <img src="img/form.png" alt ="Form Analyser">
+        </button>
+        <label>
+            <input type="checkbox" id="cbStatistic">
+            <span>Anonyme Speicherung</span>
+        </label>
+    </form>
 </div>
 <footer id="footer"></footer>
 </body>
