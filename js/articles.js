@@ -1,11 +1,13 @@
 $(initArticles);
+/*call the init function*/
 
 function initArticles() {
+	/*add on click events*/
 	$(".action-button").on("click", toggleExpander);
-	//$(".control-img").on("click", toggleExpander);
 	$(".article-header").on("click", toggleExpander);
 }
 
+/*funtion for exapnding/ collapsing the respective articles*/
 function toggleExpander(event) {
 	event.preventDefault();
 	

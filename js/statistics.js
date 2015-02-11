@@ -1,5 +1,7 @@
 ﻿$(document).ready(initChart);
+/*load data from webservice after site was fully loaded*/
 
+/*function for loading data from webservice*/
 function initChart() {
 	var options = {
 		dataType : 'jsonp',
@@ -10,6 +12,7 @@ function initChart() {
 	$.ajax(options).done(prepareData);
 }
 
+/*prepare the necessary statistical data*/
 function prepareData(data) {
 	var statisticData = [8];
 	var valueCount = 0;
@@ -46,6 +49,7 @@ function prepareData(data) {
 	prepareChart(statisticData, valueCount);
 }
 
+/*add data to the chart*/
 function prepareChart(statisticData, valueCount) {
 	var width = 1024, barHeight = 50;
 	var statisticCaptions = ['FSME', 'Diphtherie', 'Tetanus', 'Polio', 'HepA', 'HepB', 'Masern', 'Röteln'];

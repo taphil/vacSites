@@ -1,5 +1,5 @@
 $(function(){
-  console.log("load header/ footer");
+  /*load subpages*/
   $("#header").load("subpages/header.html"); 
   $("#footer").load("subpages/footer.html"); 
 });

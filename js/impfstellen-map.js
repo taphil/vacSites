@@ -11,9 +11,6 @@ var userPositionMarker;
 var activeWindow;
 
 function init() {
-	/*initialize globe variables*/
-	//mapMarkes = [];
-
 	/*add event listeners*/
 	$('#btnGetPosition').click(getCurrentPosition);
 	$('#btnClosestLocation').click(clickNextLocation);
@@ -25,6 +22,7 @@ function init() {
 	loadVacSites();
 }
 
+/*load vaccination sites from open data service*/
 function loadVacSites() {
 	var options = {
 		url : "http://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:IMPFSTELLEOGD&srsName=EPSG:4326&outputFormat=json",
@@ -33,14 +31,13 @@ function loadVacSites() {
 	$.ajax(options).done(onReceiveComplete);
 }
 
+/*success callback after data query*/
 function onReceiveComplete(data) {
 	vacSites = data;
-
-	/*TODO: probably save data to local storage in future*/
-
 	addMapMarkers();
 }
 
+/*add the markers for vaccination sites*/
 function addMapMarkers() {
 	/*Default location in case the user does not want to use geolocation*/
 	var myLatlng = new google.maps.LatLng(48.209272, 16.37280);
@@ -187,8 +184,14 @@ function getCurrentPosition() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPositionOnMap, geoLocationError, geoOptions);
 	} else {
-		/*TODO: add proper errorhandling*/
-		alert("Your browser does not support geolocation!");
+		$('#errorText').text("Ihr Browser kann den aktuellen Standort nicht ermitteln!");
+		$('#errorBar').addClass("message-bar-visible");
+		$('#errorBar').removeClass("message-bar-hidden");
+		$('#errorBar').animate({
+			marginTop: -2,
+			opacity: 1.0
+			}, 1500);
+		window.setTimeout(hideErrorBar, 3000);
 	}
 
 }
@@ -224,15 +227,10 @@ function showPositionOnMap(position) {
 	}
 }
 
-/*function for error handling during geolocation request
- * TODO: add proper error handler (instead of alert)
- */
+/*function for error handling during geolocation request */
 function geoLocationError(error) {
-	
-	//alert(error.code);
 	switch(error.code) {
 	case error.PERMISSION_DENIED:
-		//alert("Please allow geolocation!");
 		$('#errorText').text("Standortbestimmung ist nicht zugelassen!");
 		$('#errorBar').addClass("message-bar-visible");
 		$('#errorBar').removeClass("message-bar-hidden");
@@ -243,7 +241,6 @@ function geoLocationError(error) {
 		window.setTimeout(hideErrorBar, 3000);
 		break;
 	case error.POSITION_UNAVAILABLE:
-		//alert("Your position could not be determined!");
 		$('#errorText').text("Ihre Position konnte nicht ermittelt werden.");
 		$('#errorBar').addClass("message-bar-visible");
 		$('#errorBar').removeClass("message-bar-hidden");
@@ -254,7 +251,6 @@ function geoLocationError(error) {
 		window.setTimeout(hideErrorBar, 3000);
 		break;
 	case error.TIMEOUT:
-		//alert("Your location could not be determined in reasonable time!");
 		$('#errorText').text("Standortbestimmung konnte nicht zeitgerecht durchgef�hrt worden!");
 		$('#errorBar').addClass("message-bar-visible");
 		$('#errorBar').removeClass("message-bar-hidden");
