@@ -43,7 +43,7 @@ function updateData(data, val) {
     var htmlTable = "<table border='1'><thead><td>Bezeichnung</td><td>Adresse</td></thead>";
 
     $.each(data.features, function(i, value) {
-    	if (value.properties.BEZEICHNUNG.search(val) != -1) {
+    	if (((value.properties.BEZEICHNUNG.toLowerCase()).search((val.toLowerCase())) != -1) || ((value.properties.ADRESSE.toLowerCase()).search((val.toLowerCase())) != -1)) {
         htmlTable += "</a><tr><td><a target='_blank' href='"+value.properties.WEBLINK1+"'>"+value.properties.BEZEICHNUNG+"</a></td><td>"+value.properties.ADRESSE+"</td></tr>";
     	}
     });
