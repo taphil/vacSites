@@ -26,7 +26,8 @@ function toggleExpander(event) {
 	$(expandButton).html(($(expandButton).html() === "Hide" ? "Show" : "Hide"));
 	
 	var videoPlayers = $(this).closest(".info-article").find("video");
-	if ($(this).html() === "Hide") {
+	if ($(this).html() === "Show") {
+		alert("stop video");
 		$.each(videoPlayers, function(index, video) {
 			video.pause();
 		});
