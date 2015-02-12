@@ -27,7 +27,6 @@ function toggleExpander(event) {
 	
 	var videoPlayers = $(this).closest(".info-article").find("video");
 	if ($(this).html() === "Show") {
-		alert("stop video");
 		$.each(videoPlayers, function(index, video) {
 			video.pause();
 		});
